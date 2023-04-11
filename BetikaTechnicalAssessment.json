@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "06a63931-81cc-40a3-886b-065092bcae36",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14395178"
+	},
+	"item": [
+		{
+			"name": "User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Verify status code is: 200', function() {",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test('The number of objects in the response is: 10', function() {",
+							"    let num = pm.response.json().length;",
+							"    pm.expect(num).to.equal(10);",
+							"})",
+							"",
+							"pm.test('The number of objects in the response is: 10', function() {",
+							"    let data = pm.response.json()",
+							"    pm.expect(data[5].id).to.equal(6);",
+							"    pm.expect(data[5].userName).to.include(\"User 6\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Users",
+					"protocol": "https",
+					"host": [
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
